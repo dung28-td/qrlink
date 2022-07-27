@@ -1,16 +1,19 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from 'react-router-dom'
 import { QRCodeSVG } from 'qrcode.react'
 
 function App() {
-  const [value, setValue] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const link = searchParams.get('link') || ''
+
   const isUrl = useMemo(() => {
     try {
-      new URL(value)
+      new URL(link)
       return true
     } catch (error) {
       return false
     }
-  }, [value])
+  }, [link])
 
   return (
     <div className="container mx-auto py-6 px-4 lg:px-0">
@@ -19,9 +22,15 @@ function App() {
         <input
           autoFocus
           type='text'
-          value={value}
+          value={link}
           onChange={e => {
-            setValue(e.currentTarget.value)
+            const { value } = e.currentTarget
+            if (value) {
+              searchParams.set('link', value)
+            } else {
+              searchParams.delete('link')
+            }
+            setSearchParams(searchParams)
           }}
           placeholder='Paste your link here'
           className="mt-1 block w-1/2 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-center"
@@ -31,16 +40,16 @@ function App() {
             <p>
               Link:{' '}
               <a
-                href={value}
+                href={link}
                 target='_blank'
                 rel='noreferrer'
                 className="text-indigo-600"
               >
-                {value}
+                {link}
               </a>
             </p>
             <QRCodeSVG
-              value={value}
+              value={link}
               width={180}
               height={180}
             />
