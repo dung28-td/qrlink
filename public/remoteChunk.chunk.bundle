@@ -1,0 +1,1 @@
+(self.webpackChunkRepackExample=self.webpackChunkRepackExample||[]).push([["remoteChunk"],{628:function(e,n,u){Object.defineProperty(n,"__esModule",{value:!0}),n.default=function(){return(0,a.jsx)(l.Text,{children:"Hello! This is remote chunk"})};var l=u(3958),a=u(3823)}}]);//# sourceMappingURL=remoteChunk.chunk.bundle.map?platform=android
