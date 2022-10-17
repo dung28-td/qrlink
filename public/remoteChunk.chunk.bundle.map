@@ -1,0 +1,1 @@
+{"version":3,"file":"remoteChunk.chunk.bundle","mappings":"yKAEe,WACb,OACE,SAAC,EAAAA,KAAI,0BAIT,EARA,cAAoC,S","sources":["webpack:///./src/components/RemoteChunk.tsx"],"sourcesContent":["import { Text } from \"react-native\";\n\nexport default function RemoteChunk() {\n  return (\n    <Text>\n      Remote chunk\n    </Text>\n  )\n}"],"names":["Text"],"sourceRoot":""}
